@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using API_AppParkingSoft.DAL.Entities;
+using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.Metrics;
 
 namespace API_AppParkingSoft.DAL
 {
@@ -11,5 +13,7 @@ namespace API_AppParkingSoft.DAL
         {
             base.OnModelCreating(modelBuilder);
         }
+
+        public DbSet<User> Users { get; set; }
     }
 }
