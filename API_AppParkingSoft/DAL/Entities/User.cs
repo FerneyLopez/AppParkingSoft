@@ -15,6 +15,11 @@ namespace API_AppParkingSoft.DAL.Entities
         public string Name { get; set; }
 
 
+        [Display(Name = "IdUser")]
+        [Required(ErrorMessage = "¡Field {0} is required!")]
+        public string IdUser { get; set; }
+
+
         [Display(Name = "LastName")]
         [MaxLength(50, ErrorMessage = "The field {2} must have a maximun of {1} characteres")]
         [Required(ErrorMessage = "¡Field {2} is required!")]
