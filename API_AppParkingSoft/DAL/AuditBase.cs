@@ -1,4 +1,6 @@
-﻿namespace API_AppParkingSoft.DAL.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace API_AppParkingSoft.DAL.Entities
 {
     public class AuditBase
     {
