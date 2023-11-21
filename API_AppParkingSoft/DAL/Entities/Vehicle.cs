@@ -5,14 +5,15 @@ namespace API_AppParkingSoft.DAL.Entities
 {
     public class Vehicle:AuditBase
     {
-        [Display(Name = "Vehicle")]
-        [MaxLength(10, ErrorMessage = "El campo {0} debe tener máximo {1} caracteres")]
         [Required(ErrorMessage = "¡El campo {0} es obligatorio!")]
-        public string Name { get; set; }
+        public string LicensePlate { get; set; }
 
-
-        [Display (Name = "Users")]
-
-        public
+        [Required(ErrorMessage = "¡El campo {1} es obligatorio!")]
+        public string vehicleOwner { get; set; }
+        
+        public string Brand { get; set; }
+        public string Model { get; set; }
+        
+        
     }
 }
