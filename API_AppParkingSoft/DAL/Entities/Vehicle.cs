@@ -11,9 +11,11 @@ namespace API_AppParkingSoft.DAL.Entities
         [Required(ErrorMessage = "¡El campo {1} es obligatorio!")]
         public string vehicleOwner { get; set; }
         
-        public string Brand { get; set; }
-        public string Model { get; set; }
-        
-        
+        public string? Brand { get; set; }
+        public string? Model { get; set; }
+
+        //Vehicle type
+        [Display(Name = "VehicleType")]
+        public ICollection<CategoryVehicle>? CategoryVehicles { get; set; }
     }
 }

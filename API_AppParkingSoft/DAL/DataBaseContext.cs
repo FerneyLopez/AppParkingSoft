@@ -12,8 +12,13 @@ namespace API_AppParkingSoft.DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Vehicle>().HasIndex(v => v.LicensePlate).IsUnique();
         }
 
+
+        //DbSet tables
+        public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<User> Users { get; set; }
     }
 }
