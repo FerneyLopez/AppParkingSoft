@@ -15,18 +15,20 @@ namespace API_AppParkingSoft.Domain.Services
         }
         public async Task<IEnumerable<Vehicle>> GetVehiclesAsync()
         {
-            var vehicles = await _context.Vehicles
-               .ToListAsync();
-            return vehicles;
+            return await _context.Vehicles
+
+                .ToListAsync();
         }
         public async Task<Vehicle> CreateVehicleAsync(Vehicle vehicle, Guid clientId)
         {
             try
             {
                 vehicle.Id = Guid.NewGuid();
+                vehicle.ClientId = clientId;
+                vehicle.Client = await _context.Clients.FirstOrDefaultAsync(c => c.Id == clientId);
 
-                _context.Vehicles.Add(vehicle); 
-                await _context.SaveChangesAsync(); 
+                _context.Vehicles.Add(vehicle);
+                await _context.SaveChangesAsync();
 
                 return vehicle;
             }
@@ -55,6 +57,6 @@ namespace API_AppParkingSoft.Domain.Services
             }
         }
 
-        
+
     }
 }

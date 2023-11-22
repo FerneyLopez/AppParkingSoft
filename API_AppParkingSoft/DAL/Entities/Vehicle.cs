@@ -17,11 +17,13 @@ namespace API_AppParkingSoft.DAL.Entities
 
         //Vehicle type
         [Display(Name = "Tipo de vehiculo")]
-        public ICollection<CategoryVehicle>? CategoryVehicles { get; set; }
+        public CategoryVehicle? CategoryVehicle { get; set; }
 
-        //Id Client
-
+        //Client
         [Display(Name = "Cliente")]
+        public Client? Client { get; set; }
+
+        [Display(Name = "Id Cliente")]
         public Guid ClientId { get; set; }
     }
 }

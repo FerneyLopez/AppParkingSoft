@@ -14,7 +14,7 @@ namespace API_AppParkingSoft.Controllers
 
 
         [HttpGet, ActionName("Get")]
-        [Route("Get")]
+        [Route("GetClient")]
         public async Task<ActionResult<IEnumerable<Client>>> GetClientsAsync()
         {
             var clients = await _clientService.GetClientsAsync();
@@ -25,7 +25,7 @@ namespace API_AppParkingSoft.Controllers
         }
 
         [HttpPost, ActionName("Create")]
-        [Route("Create")]
+        [Route("CreateClient")]
         public async Task<ActionResult<Client>> CreateClientAsync(Client client)
         {
             try
@@ -50,7 +50,7 @@ namespace API_AppParkingSoft.Controllers
         }
 
         [HttpGet, ActionName("Get")]
-        [Route("GetById/{id}")]
+        [Route("GetClientById/{id}")]
         public async Task<ActionResult<IEnumerable<Client>>> GetClientsByIdAsync(Guid id)
         {
             if (id == null) return BadRequest("Id es requerido!");
@@ -63,7 +63,7 @@ namespace API_AppParkingSoft.Controllers
         }
 
         [HttpPut, ActionName("Edit")]
-        [Route("Edit")]
+        [Route("EditClient")]
         public async Task<ActionResult<Client>> EditClientAsync(Client client)
         {
             try
@@ -85,7 +85,7 @@ namespace API_AppParkingSoft.Controllers
         }
 
         [HttpDelete, ActionName("Delete")]
-        [Route("Delete")]
+        [Route("DeleteClient")]
         public async Task<ActionResult<Client>> DeleteClientAsync(Guid id)
         {
             if (id == null) return BadRequest("Id es requerido");

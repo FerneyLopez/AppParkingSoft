@@ -2,14 +2,14 @@
 
 namespace API_AppParkingSoft.DAL.Entities
 {
-    public class Client : AuditBase
+    public class Client:AuditBase
     {
-        [Display(Name = "clientName")]
+        [Display(Name = "Nombre cliente")]
         [Required(ErrorMessage = "¡Field {0} is required!")]
         public string clientName { get; set; }
 
         //Vehicle
-        [Display(Name = "Vehicles")]
+        [Display(Name = "Vehiculos")]
         public ICollection<Vehicle>? Vehicles { get; set; }
     }
 }
