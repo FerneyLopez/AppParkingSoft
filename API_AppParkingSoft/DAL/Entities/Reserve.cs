@@ -18,5 +18,7 @@ namespace API_AppParkingSoft.DAL.Entities
         //System user
         [Display(Name = "System user")]
         public ICollection<User> users { get; set; }
+
+
     }
 }
