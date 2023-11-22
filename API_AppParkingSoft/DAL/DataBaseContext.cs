@@ -14,11 +14,16 @@ namespace API_AppParkingSoft.DAL
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Vehicle>().HasIndex(v => v.LicensePlate).IsUnique();
+            modelBuilder.Entity<Client>().HasIndex("clientName", "VehicleId").IsUnique();
         }
 
 
         //DbSet tables
-        public DbSet<Vehicle> Vehicles { get; set; }
+        public DbSet<CategoryVehicle> CategoryVehicles { get; set; }
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<Rate> Rates { get; set; }
+        public DbSet<Reserve> Reserves { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Vehicle> Vehicles { get; set; }
     }
 }
