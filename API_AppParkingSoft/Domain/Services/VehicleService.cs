@@ -57,6 +57,23 @@ namespace API_AppParkingSoft.Domain.Services
             }
         }
 
+        public async Task<Vehicle> DeleteVehicleAsync(Guid id)
+        {
+            try
+            {
+                var vehicle = await _context.Vehicles.FirstOrDefaultAsync(v => v.Id == id);
 
+                if (vehicle == null) return null;
+
+                _context.Vehicles.Remove(vehicle);
+                await _context.SaveChangesAsync();
+
+                return vehicle;
+            }
+            catch (DbUpdateException dbUpdateException)
+            {
+                throw new Exception(dbUpdateException.InnerException?.Message ?? dbUpdateException.Message);
+            }
+        }
     }
 }

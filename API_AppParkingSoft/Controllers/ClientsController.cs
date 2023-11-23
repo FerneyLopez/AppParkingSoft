@@ -90,11 +90,11 @@ namespace API_AppParkingSoft.Controllers
         {
             if (id == null) return BadRequest("Id es requerido");
 
-            var deleteCountry = await _clientService.DeleteClientAsync(id);
+            var deleteClient = await _clientService.DeleteClientAsync(id);
 
-            if (deleteCountry == null) return NotFound("Cliente no encontrado");
+            if (deleteClient == null) return NotFound("Cliente no encontrado");
 
-            return Ok(deleteCountry);
+            return Ok(deleteClient);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using API_AppParkingSoft.DAL.Entities;
 using API_AppParkingSoft.Domain.Interfaces;
+using API_AppParkingSoft.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API_AppParkingSoft.Controllers
@@ -74,6 +75,19 @@ namespace API_AppParkingSoft.Controllers
 
                 return Conflict(ex.Message);
             }
+        }
+
+        [HttpDelete, ActionName("Delete")]
+        [Route("DeleteVehicle")]
+        public async Task<ActionResult<Vehicle>> DeleteVehicleAsync(Guid id)
+        {
+            if (id == null) return BadRequest("Id es requerido");
+
+            var deleteVehicle = await _vehicleService.DeleteVehicleAsync(id);
+
+            if (deleteVehicle == null) return NotFound("Cliente no encontrado");
+
+            return Ok(deleteVehicle);
         }
     }
 }
