@@ -5,20 +5,20 @@ namespace API_AppParkingSoft.DAL.Entities
     public class User:AuditBase
     {
 
-        [Display(Name = "idUser")]
-        [Required(ErrorMessage = "¡Field {0} is required!")]
+        [Display(Name = "Id Usuario")]
+        [Required(ErrorMessage = "¡El campo {0} es obligatorio!")]
         public string idUser { get; set; }
 
 
-        [Display(Name = "UserName")]
-        [MaxLength(50, ErrorMessage = "The field {1} must have a maximun of {1} characteres")]
-        [Required(ErrorMessage = "¡Field {1} is required!")]
+        [Display(Name = "Nombre usuario")]
+        [MaxLength(50, ErrorMessage = "El campo {1} debe tener por lo menos {1} caracter")]
+        [Required(ErrorMessage = "¡El campo {1} es obligatorio!")]
         public string Name { get; set; }
 
 
-        [Display(Name = "LastName")]
-        [MaxLength(50, ErrorMessage = "The field {2} must have a maximun of {1} characteres")]
-        [Required(ErrorMessage = "¡Field {2} is required!")]
+        [Display(Name = "Apellido usuario")]
+        [MaxLength(50, ErrorMessage = "El campo {2} debe tener por lo menos {1} caracter")]
+        [Required(ErrorMessage = "¡El campo {2} es obligatorio!")]
         public string LastName { get; set; }
 
 
@@ -27,13 +27,16 @@ namespace API_AppParkingSoft.DAL.Entities
 
 
         [Display(Name = "Password")]
-        [MaxLength(12, ErrorMessage = "The field {4} must have a maximun of {1} characteres")]
-        [Required(ErrorMessage = "¡Field {4} is required!")]
+        [MaxLength(12, ErrorMessage = "El campo {4} debe tener por lo menos {1} caracter")]
+        [Required(ErrorMessage = "¡El campo {4} es obligatorio!")]
         public string Password { get; set; }
 
 
-        [Display(Name = "Status")]
+        [Display(Name = "Estado")]
         public bool? Status { get; set; }
 
+        //Reserves
+        [Display(Name = "Reservas")]
+        public ICollection<Reserve>? Reserves { get; set; }
     }
 }
