@@ -12,13 +12,17 @@ namespace API_AppParkingSoft.Domain.Services
         {
             _context = context;
         }
+
+        
         public async Task<IEnumerable<Client>> GetClientsAsync()
         {
             var clients = await _context.Clients
-              .Include(c => c.Vehicles)
+              .Include(c => c.Vehicles) 
               .ToListAsync();
             return clients;
         }
+
+
         public async Task<Client> CreateClientAsync(Client client)
         {
             try
@@ -35,6 +39,7 @@ namespace API_AppParkingSoft.Domain.Services
                 throw new Exception(dbUpdateException.InnerException?.Message ?? dbUpdateException.Message);
             }
         }
+
         public async Task<Client> GetClientsByIdAsync(Guid id)
         {
             return await _context.Clients.FirstOrDefaultAsync(c => c.Id == id);
