@@ -11,7 +11,7 @@ namespace API_AppParkingSoft.DAL.Entities
 
         public double TotalCost { get; set; }
 
-        public bool activeVehicle { get; set; }
+        public bool stateVehicle { get; set; }
 
         //Vehicle
         [Display(Name = "Vehiculos")]
@@ -21,7 +21,6 @@ namespace API_AppParkingSoft.DAL.Entities
         //System user
         [Display(Name = "Usuario sistema")]
         public User user { get; set; }
-
 
     }
 }
