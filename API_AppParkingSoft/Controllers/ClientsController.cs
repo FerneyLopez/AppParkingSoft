@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API_AppParkingSoft.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class ClientsController : Controller
     {
         private readonly IClientService _clientService;
@@ -41,7 +43,7 @@ namespace API_AppParkingSoft.Controllers
 
                 if (ex.Message.Contains("duplicated"))
                 {
-                    return Conflict(String.Format("El país {0} ya existe.", client.Id));
+                    return Conflict(String.Format("El cliente {0} ya existe.", client.Id));
 
                 }
 
