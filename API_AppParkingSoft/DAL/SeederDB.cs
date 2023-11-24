@@ -1,4 +1,5 @@
 ﻿using API_AppParkingSoft.DAL.Entities;
+using Microsoft.IdentityModel.Tokens;
 using System.Diagnostics.Metrics;
 using System.Xml.Linq;
 
@@ -23,6 +24,8 @@ namespace API_AppParkingSoft.DAL
             await PopulateUsersAsync(); 
             await PopulateCategoryVehiclesAsync();
             await PopulateVehiclesAsync();
+            await PopulateReservesAsync();
+            await PopulateRatesAsync();
 
             await _context.SaveChangesAsync(); 
         }
@@ -152,6 +155,104 @@ namespace API_AppParkingSoft.DAL
                 });
             }
         }
+
+
+        private async Task PopulateReservesAsync()
+        {
+            if (!_context.Reserves.Any())
+            {
+
+                _context.Reserves.Add(new Reserve
+                {
+                    StartDate = DateTime.Now,
+                    EndDate = DateTime.Now,
+                    TotalCost = 4000,
+                    activeVehicle = true,
+                    LicensePlate = "STD-05D",
+                    NameUser = "Ferney Orlando"
+
+                });
+
+
+                _context.Reserves.Add(new Reserve
+                {
+                    StartDate = DateTime.Now,
+                    EndDate = DateTime.Now,
+                    TotalCost = 20000,
+                    activeVehicle = true,
+                    LicensePlate = "ILB-58D",
+                    NameUser = "Ferney Orlando"
+
+                });
+
+
+                _context.Reserves.Add(new Reserve
+                {
+                    StartDate = DateTime.Now,
+                    EndDate = DateTime.Now,
+                    TotalCost = 9000,
+                    activeVehicle = true,
+                    LicensePlate = "UFI-16F",
+                    NameUser = "Leidy Melissa"
+
+                });
+
+
+                _context.Reserves.Add(new Reserve
+                {
+                    StartDate = DateTime.Now,
+                    EndDate = DateTime.Now,
+                    TotalCost = 2000,
+                    activeVehicle = false,
+                    LicensePlate = "WKGSN001428",
+                    NameUser = "Leidy Melissa"
+
+                });
+
+            }
+        }
+
+
+        private async Task PopulateRatesAsync()
+        {
+            if (!_context.Rates.Any())
+            {
+
+                _context.Rates.Add(new Rate
+                {
+                    RateName = "Parqueo Motocicleta",
+                    hourlyRate = 1000,
+                    weeklyRate = 15000,
+                    monthlyRate = 50000,
+                });
+
+                _context.Rates.Add(new Rate
+                {
+                    RateName = "Parqueo Carro",
+                    hourlyRate = 5000,
+                    weeklyRate = 45000,
+                    monthlyRate = 150000,
+                });
+
+                _context.Rates.Add(new Rate
+                {
+                    RateName = "Parqueo Ciclo Motor",
+                    hourlyRate = 1000,
+                    weeklyRate = 15000,
+                    monthlyRate = 45000,
+                });
+
+                _context.Rates.Add(new Rate
+                {
+                    RateName = "Parqueo Bicicleta",
+                    hourlyRate = 500,
+                    weeklyRate = 10000,
+                    monthlyRate = 30000,
+                });
+
+            }
+        }
         #endregion
+
     }
 }
