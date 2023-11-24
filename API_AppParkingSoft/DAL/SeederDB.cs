@@ -122,7 +122,8 @@ namespace API_AppParkingSoft.DAL
                     LicensePlate = "STD-05D",
                     Brand = "AKT",
                     Model = "2015",
-                    
+                    CategoryVehicle = "Motocicleta"
+
                 });
 
                 _context.Vehicles.Add(new Vehicle
@@ -130,6 +131,8 @@ namespace API_AppParkingSoft.DAL
                     LicensePlate = "ILB-58D",
                     Brand = "Renault",
                     Model = "2023",
+                    CategoryVehicle = "Carro"
+
                 });
 
                 _context.Vehicles.Add(new Vehicle
@@ -137,6 +140,7 @@ namespace API_AppParkingSoft.DAL
                     LicensePlate = "UFI-16F",
                     Brand = "YAMAHA",
                     Model = "2022",
+                    CategoryVehicle = "Motocicleta"
                 });
 
                 _context.Vehicles.Add(new Vehicle
@@ -144,6 +148,7 @@ namespace API_AppParkingSoft.DAL
                     LicensePlate = "WKGSN001428",
                     Brand = "RUNNER",
                     Model = "2015",
+                    CategoryVehicle = "Bicicleta"
                 });
             }
         }
