@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.Metrics;
 
 namespace API_AppParkingSoft.DAL.Entities
@@ -17,17 +18,17 @@ namespace API_AppParkingSoft.DAL.Entities
 
         //Vehicle type
         [Display(Name = "Tipo de vehiculo")]
-        public CategoryVehicle? CategoryVehicle { get; set; }
-
+        public  CategoryVehicle? CategoryVehicle { get; set; }
+        
         //Reserves
         [Display(Name = "Reserves")]
         public ICollection<Reserve>? Reserves { get; set; }
 
         //Client
-        [Display(Name = "Cliente")]
+        /*[Display(Name = "Cliente")]
         public Client? Client { get; set; }
 
         [Display(Name = "Id Cliente")]
-        public Guid ClientId { get; set; }
+        public Guid ClientId { get; set; }*/ //líneas comentadas 23/11/2023
     }
 }

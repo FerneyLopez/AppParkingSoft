@@ -31,10 +31,6 @@ namespace API_AppParkingSoft.DAL.Entities
         [Required(ErrorMessage = "¡El campo {4} es obligatorio!")]
         public string Password { get; set; }
 
-
-        [Display(Name = "Estado")]
-        public bool? Status { get; set; }
-
         //Reserves
         [Display(Name = "Reservas")]
         public ICollection<Reserve>? Reserves { get; set; }

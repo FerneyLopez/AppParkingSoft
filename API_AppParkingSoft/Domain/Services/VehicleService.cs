@@ -24,8 +24,8 @@ namespace API_AppParkingSoft.Domain.Services
             try
             {
                 vehicle.Id = Guid.NewGuid();
-                vehicle.ClientId = clientId;
-                vehicle.Client = await _context.Clients.FirstOrDefaultAsync(c => c.Id == clientId);
+                //vehicle.ClientId = clientId;
+                //vehicle.Client = await _context.Clients.FirstOrDefaultAsync(c => c.Id == clientId);
 
                 _context.Vehicles.Add(vehicle);
                 await _context.SaveChangesAsync();
