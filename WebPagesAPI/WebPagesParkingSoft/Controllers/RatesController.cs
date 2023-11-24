@@ -19,7 +19,7 @@ namespace WebPagesParkingSoft.Controllers
             var json = await _httpClient.CreateClient().GetStringAsync(url);
             List<Rate> rates = JsonConvert.DeserializeObject<List<Rate>>(json);
 
-            return View(json);
+            return View(rates);
         }
     }
 }
