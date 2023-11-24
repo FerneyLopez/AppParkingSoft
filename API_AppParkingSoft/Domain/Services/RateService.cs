@@ -19,11 +19,14 @@ namespace API_AppParkingSoft.Domain.Services
               .ToListAsync();
         }
 
-        public async Task<Rate> CreateRateAsync(Rate rate)
+        public async Task<Rate> CreateRateAsync(Rate rate, Guid idCategoryVehicle)
         {
             try
             {
                 rate.Id = Guid.NewGuid();
+                rate.idCategoryVehicle = idCategoryVehicle;
+                rate.CategoryVehicle = await _context.CategoryVehicles
+                    .FirstOrDefaultAsync(c => c.Id == idCategoryVehicle);
 
                 _context.Rates.Add(rate);
                 await _context.SaveChangesAsync();

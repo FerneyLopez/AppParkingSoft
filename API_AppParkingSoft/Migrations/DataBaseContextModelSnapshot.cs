@@ -53,6 +53,9 @@ namespace API_AppParkingSoft.Migrations
                     b.Property<double>("hourlyRate")
                         .HasColumnType("float");
 
+                    b.Property<Guid>("idCategoryVehicle")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<double>("monthlyRate")
                         .HasColumnType("float");
 

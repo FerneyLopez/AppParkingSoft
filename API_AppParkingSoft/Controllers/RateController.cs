@@ -29,11 +29,11 @@ namespace API_AppParkingSoft.Controllers
 
         [HttpPost, ActionName("Create")]
         [Route("CreateRate")]
-        public async Task<ActionResult<Rate>> CreateRateAsync(Rate rate)
+        public async Task<ActionResult<Rate>> CreateRateAsync(Rate rate, Guid idCategoryVehicle)
         {
             try
             {
-                var createdRate = await _rateService.CreateRateAsync(rate);
+                var createdRate = await _rateService.CreateRateAsync(rate, idCategoryVehicle);
 
                 if (createdRate == null) return NotFound();
 

@@ -22,7 +22,9 @@ namespace API_AppParkingSoft.DAL.Entities
 
 
         //Vehicle Type
-        [Display(Name = "Tipo de vehiculo")]
         public CategoryVehicle? CategoryVehicle { get; set; }
+
+        [Display(Name = "Tipo de vehiculo")]
+        public Guid idCategoryVehicle { get; set; }
     }
 }
