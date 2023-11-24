@@ -18,7 +18,7 @@ namespace API_AppParkingSoft.DAL.Entities
 
         //Vehicle type
         [Display(Name = "Tipo de vehiculo")]
-        public  CategoryVehicle? CategoryVehicle { get; set; }
+        public CategoryVehicle? CategoryVehicle { get; set; }
         
         //Reserves
         [Display(Name = "Reserves")]
