@@ -20,7 +20,6 @@ namespace API_AppParkingSoft.DAL
 
         //DbSet tables
         public DbSet<CategoryVehicle> CategoryVehicles { get; set; }
-        public DbSet<Client> Clients { get; set; }
         public DbSet<Rate> Rates { get; set; }
         public DbSet<Reserve> Reserves { get; set; }
         public DbSet<User> Users { get; set; }

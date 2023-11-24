@@ -25,11 +25,11 @@ namespace API_AppParkingSoft.Controllers
 
         [HttpPost, ActionName("Create")]
         [Route("CreateVehicles")]
-        public async Task<ActionResult> CreateVehicleAsync(Vehicle vehicle, Guid clientId)
+        public async Task<ActionResult> CreateVehicleAsync(Vehicle vehicle)
         {
             try
             {
-                var createdVehicle = await _vehicleService.CreateVehicleAsync(vehicle, clientId);
+                var createdVehicle = await _vehicleService.CreateVehicleAsync(vehicle);
 
                 if (createdVehicle == null) return NotFound();
 

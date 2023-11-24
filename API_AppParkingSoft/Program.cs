@@ -17,9 +17,9 @@ builder.Services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 //Interfaces and services
-builder.Services.AddScoped<IClientService, ClientService>();
 builder.Services.AddScoped<IVehicleService, VehicleService>();
 builder.Services.AddScoped<IRateService, RateService>();
+builder.Services.AddScoped<IReserveService, ReserveService>();
 builder.Services.AddTransient<SeederDB>();
 
 

@@ -24,11 +24,5 @@ namespace API_AppParkingSoft.DAL.Entities
         [Display(Name = "Reserves")]
         public ICollection<Reserve>? Reserves { get; set; }
 
-        //Client
-        /*[Display(Name = "Cliente")]
-        public Client? Client { get; set; }
-
-        [Display(Name = "Id Cliente")]
-        public Guid ClientId { get; set; }*/ //líneas comentadas 23/11/2023
     }
 }
