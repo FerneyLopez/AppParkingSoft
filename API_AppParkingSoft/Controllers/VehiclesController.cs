@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API_AppParkingSoft.Controllers
 {
+    [ApiController] 
+    [Route("api/[controller]")]
     public class VehiclesController : Controller
     {
         private readonly IVehicleService _vehicleService;
@@ -12,6 +14,7 @@ namespace API_AppParkingSoft.Controllers
         {
             _vehicleService = vehicleService;
         }
+
         [HttpGet, ActionName("Get")]
         [Route("GetVehicles")]
         public async Task<ActionResult<IEnumerable<Vehicle>>> GetVehiclesAsync()
@@ -46,7 +49,24 @@ namespace API_AppParkingSoft.Controllers
             }
         }
 
+
+
         [HttpGet, ActionName("Get")]
+        [Route("GetByVehiclesLicensePlate/{LicensePlate}")]
+        public async Task<ActionResult<Vehicle>> GetStateByLicensePlateAsync(string LicensePlate)
+        {
+            if (LicensePlate == null) return BadRequest("La placa es requerida!");
+
+            var license = await _vehicleService.GetVehicleByLicensePlateAsync(LicensePlate);
+
+            if (license == null) return NotFound();
+
+            return Ok(license);
+        }
+
+
+
+        /*[HttpGet, ActionName("Get")]
         [Route("GetByVehiclesLicensePlate/{LicensePlate}")]
         public async Task<ActionResult<Vehicle>> GetVehicleByLicensePlateAsync(string licensePlate)
         {
@@ -57,7 +77,7 @@ namespace API_AppParkingSoft.Controllers
             if (state == null) return NotFound();
 
             return Ok(state);
-        }
+        }*/
 
         [HttpPut, ActionName("Edit")]
         [Route("EditVehicles")]

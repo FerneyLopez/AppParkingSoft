@@ -33,10 +33,14 @@ namespace API_AppParkingSoft.Domain.Services
                 throw new Exception(dbUpdateException.InnerException?.Message ?? dbUpdateException.Message);
             }
         }
-        public async Task<Vehicle> GetVehicleByLicensePlateAsync(string licensePlate)
+
+
+        public async Task<Vehicle> GetVehicleByLicensePlateAsync(string LicensePlate)
         {
-            return await _context.Vehicles.FirstOrDefaultAsync(v => v.LicensePlate == licensePlate);
+            return await _context.Vehicles.FirstOrDefaultAsync(v => v.LicensePlate == LicensePlate);
         }
+
+
         public async Task<Vehicle> EditVehicleAsync(Vehicle vehicle, Guid clientId)
         {
             try
