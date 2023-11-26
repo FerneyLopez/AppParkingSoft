@@ -54,19 +54,23 @@ namespace API_AppParkingSoft.Domain.Services
                 if (vehicle == null) return null;
 
                 var reserve = await _context.Reserves
-                    .FirstOrDefaultAsync();
+                    .FirstOrDefaultAsync(r => r.LicensePlate == licensePlate);
 
                 reserve.Id = Guid.NewGuid();
-                var date1 = reserve.EndDate = DateTime.Now;
+                var date1 = DateTime.Now; //reserve.EndDate = DateTime.Now;
                 reserve.LicensePlate = licensePlate;
                 reserve.activeVehicle = false;
 
 
                 TimeSpan interval = (TimeSpan)(date1 - reserve.StartDate);
-                Console.Write(interval.TotalHours);
-                Console.Write(interval);
+                Console.WriteLine(date1);
+                Console.WriteLine(reserve.StartDate);
+                Console.WriteLine(interval.TotalHours);
+                Console.WriteLine(interval);
+                
 
-                reserve.TotalCost = interval.Hours * 60;
+
+                reserve.TotalCost = interval.TotalHours * 60;
 
 
 
