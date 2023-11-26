@@ -14,7 +14,7 @@ namespace API_AppParkingSoft.DAL
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Vehicle>().HasIndex(v => v.LicensePlate).IsUnique();
-            //modelBuilder.Entity<Client>().HasIndex("clientName").IsUnique();
+            modelBuilder.Entity<Rate>().HasIndex(r => r.RateName).IsUnique();
         }
 
 

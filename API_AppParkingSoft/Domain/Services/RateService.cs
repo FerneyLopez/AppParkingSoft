@@ -16,7 +16,23 @@ namespace API_AppParkingSoft.Domain.Services
         public async Task<IEnumerable<Rate>> GetRatesAsync()
         {
             return await _context.Rates
-              .ToListAsync();
+              .Include(r => r.CategoryVehicle)
+                .Select(r => new Rate
+                {
+                    Id = r.Id,
+                    RateName = r.RateName,
+                    hourlyRate = r.hourlyRate,
+                    weeklyRate = r.weeklyRate,
+                    monthlyRate = r.monthlyRate,
+                    CategoryVehicle = new CategoryVehicle
+                    {
+                        Id = r.CategoryVehicle.Id,
+                        CategoryName = r.CategoryVehicle.CategoryName
+                    },
+                    idCategoryVehicle = r.idCategoryVehicle
+                    
+                })
+                .ToListAsync();
         }
 
         public async Task<Rate> CreateRateAsync(Rate rate, Guid idCategoryVehicle)
