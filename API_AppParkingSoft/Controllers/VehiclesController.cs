@@ -66,26 +66,13 @@ namespace API_AppParkingSoft.Controllers
 
 
 
-        /*[HttpGet, ActionName("Get")]
-        [Route("GetByVehiclesLicensePlate/{LicensePlate}")]
-        public async Task<ActionResult<Vehicle>> GetVehicleByLicensePlateAsync(string licensePlate)
-        {
-            if (licensePlate == null) return BadRequest("La placa es requerida!");
-
-            var state = await _vehicleService.GetVehicleByLicensePlateAsync(licensePlate);
-
-            if (state == null) return NotFound();
-
-            return Ok(state);
-        }*/
-
         [HttpPut, ActionName("Edit")]
         [Route("EditVehicles")]
-        public async Task<ActionResult<Vehicle>> EditVehicleAsync(Vehicle vehicle, Guid clientId)
+        public async Task<ActionResult<Vehicle>> EditVehicleAsync(Vehicle vehicle, Guid id) //, Guid clientId)
         {
             try
             {
-                var editedVehicle = await _vehicleService.EditVehicleAsync(vehicle, clientId);
+                var editedVehicle = await _vehicleService.EditVehicleAsync(vehicle, id);
                 return Ok(editedVehicle);
             }
             catch (Exception ex)
