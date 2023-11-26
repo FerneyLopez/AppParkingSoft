@@ -16,7 +16,7 @@ namespace API_AppParkingSoft.Domain.Services
         public async Task<IEnumerable<Rate>> GetRatesAsync()
         {
             return await _context.Rates
-              .Include(r => r.CategoryVehicle)
+                .Include(r => r.CategoryVehicle)
                 .Select(r => new Rate
                 {
                     Id = r.Id,

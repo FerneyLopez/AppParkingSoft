@@ -224,6 +224,11 @@ namespace API_AppParkingSoft.DAL
                     hourlyRate = 1000,
                     weeklyRate = 15000,
                     monthlyRate = 50000,
+                    idCategoryVehicle = new Guid("2d5317b9-8750-45f3-0b42-08dbee8f948e"),
+                    CategoryVehicle = new CategoryVehicle{
+                        Id = new Guid("2d5317b9-8750-45f3-0b42-08dbee8f948e"),
+                        CategoryName = "Motocicleta"
+                    }
                 });
 
                 _context.Rates.Add(new Rate
@@ -232,6 +237,12 @@ namespace API_AppParkingSoft.DAL
                     hourlyRate = 5000,
                     weeklyRate = 45000,
                     monthlyRate = 150000,
+                    idCategoryVehicle = new Guid("cdb5731f-7255-42ed-99fc-08dbee9d7cd2"),
+                    CategoryVehicle = new CategoryVehicle
+                    {
+                        Id = new Guid("cdb5731f-7255-42ed-99fc-08dbee9d7cd2"),
+                        CategoryName = "Carro"
+                    }
                 });
 
                 _context.Rates.Add(new Rate
@@ -240,6 +251,12 @@ namespace API_AppParkingSoft.DAL
                     hourlyRate = 1000,
                     weeklyRate = 15000,
                     monthlyRate = 45000,
+                    idCategoryVehicle = new Guid("0b316524-2595-40b8-99fd-08dbee9d7cd2"),
+                    CategoryVehicle = new CategoryVehicle
+                    {
+                        Id = new Guid("0b316524-2595-40b8-99fd-08dbee9d7cd2"),
+                        CategoryName = "Ciclomotor"
+                    }
                 });
 
                 _context.Rates.Add(new Rate
@@ -248,6 +265,12 @@ namespace API_AppParkingSoft.DAL
                     hourlyRate = 500,
                     weeklyRate = 10000,
                     monthlyRate = 30000,
+                    idCategoryVehicle = new Guid("bf47106b-0962-4d33-99fe-08dbee9d7cd2"),
+                    CategoryVehicle = new CategoryVehicle
+                    {
+                        Id = new Guid("bf47106b-0962-4d33-99fe-08dbee9d7cd2"),
+                        CategoryName = "Motocicleta"
+                    }
                 });
 
             }
