@@ -2,6 +2,7 @@
 using API_AppParkingSoft.DAL.Entities;
 using API_AppParkingSoft.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.Metrics;
 
 namespace API_AppParkingSoft.Domain.Services
 {
@@ -45,12 +46,28 @@ namespace API_AppParkingSoft.Domain.Services
         //Vehicles Exit
         public async Task<Reserve> ExitVehicleAsync(bool stateVehicle, string licensePlate)
         {
-            //throw new NotImplementedException();
-        
-        if (await _context.Vehicles.FirstOrDefaultAsync(v => v.LicensePlate == licensePlate))
+            throw new NotImplementedException();
+            /*if (stateVehicle == true) 
+            {
+                try
+                {
+
+                    country.ModifiedDate = DateTime.Now;
+
+                    _context.Countries.Update(country); //El método Update que es de EF CORE me sirve para Actualizar un objeto
+                    await _context.SaveChangesAsync();
+
+                    return country;
+                }
+                catch (DbUpdateException dbUpdateException)
+                {
+                    throw new Exception(dbUpdateException.InnerException?.Message ?? dbUpdateException.Message);
+                }
+            }
+            else
             {
 
-            }
+            }*/
 
         }
 
