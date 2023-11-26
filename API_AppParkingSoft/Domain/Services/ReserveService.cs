@@ -43,9 +43,15 @@ namespace API_AppParkingSoft.Domain.Services
         }
 
         //Vehicles Exit
-        public Task<Reserve> ExitVehicleAsync(bool stateVehicle, string licensePlate)
+        public async Task<Reserve> ExitVehicleAsync(bool stateVehicle, string licensePlate)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+        
+        if (await _context.Vehicles.FirstOrDefaultAsync(v => v.LicensePlate == licensePlate))
+            {
+
+            }
+
         }
 
         public Task<IEnumerable<Reserve>> GetActiveReservesAsync()
