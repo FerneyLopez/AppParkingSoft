@@ -166,7 +166,7 @@ namespace API_AppParkingSoft.DAL
                 {
                     StartDate = DateTime.Now,
                     EndDate = DateTime.Now,
-                    TotalCost = 4000,
+                    //TotalCost = 4000,
                     activeVehicle = true,
                     LicensePlate = "STD-05D",
                     NameUser = "Ferney Orlando"
@@ -178,7 +178,7 @@ namespace API_AppParkingSoft.DAL
                 {
                     StartDate = DateTime.Now,
                     EndDate = DateTime.Now,
-                    TotalCost = 20000,
+                    //TotalCost = 20000,
                     activeVehicle = true,
                     LicensePlate = "ILB-58D",
                     NameUser = "Ferney Orlando"
@@ -190,7 +190,7 @@ namespace API_AppParkingSoft.DAL
                 {
                     StartDate = DateTime.Now,
                     EndDate = DateTime.Now,
-                    TotalCost = 9000,
+                    //TotalCost = 9000,
                     activeVehicle = true,
                     LicensePlate = "UFI-16F",
                     NameUser = "Leidy Melissa"
@@ -202,7 +202,7 @@ namespace API_AppParkingSoft.DAL
                 {
                     StartDate = DateTime.Now,
                     EndDate = DateTime.Now,
-                    TotalCost = 2000,
+                    //TotalCost = 2000,
                     activeVehicle = false,
                     LicensePlate = "WKGSN001428",
                     NameUser = "Leidy Melissa"

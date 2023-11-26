@@ -33,5 +33,23 @@ namespace API_AppParkingSoft.Controllers
                 return Conflict(ex.Message);
             }
         }
+
+        [HttpPut, ActionName("Update")]
+        [Route("VehicleExit")]
+        public async Task<ActionResult<Rate>> ExitVehicleAsync(string licensePlate)
+        {
+            try
+            {
+                var vehiclExit = await _reserveService.ExitVehicleAsync(licensePlate);
+
+                if (vehiclExit == null) return NotFound();
+
+                return Ok(vehiclExit);
+            }
+            catch (Exception ex)
+            {
+                return Conflict(ex.Message);
+            }
+        }
     }
 }

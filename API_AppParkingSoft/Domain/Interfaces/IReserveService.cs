@@ -7,7 +7,7 @@ namespace API_AppParkingSoft.Domain.Interfaces
         Task<IEnumerable<Reserve>> GetActiveReservesAsync();
         Task<IEnumerable<Reserve>> GetInactiveReservesAsync();
         Task<Reserve> CreateReserveAsync(string licensePlate);
-        Task<Reserve> ExitVehicleAsync(bool stateVehicle, string licensePlate);
-        //Task<Reserve> ExitVehicleAsync(string licensePlate);
+        //Task<Reserve> ExitVehicleAsync(bool stateVehicle, string licensePlate);
+        Task<Reserve> ExitVehicleAsync(string licensePlate);
     }
 }

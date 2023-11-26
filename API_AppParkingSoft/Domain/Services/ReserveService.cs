@@ -44,30 +44,47 @@ namespace API_AppParkingSoft.Domain.Services
         }
 
         //Vehicles Exit
-        public async Task<Reserve> ExitVehicleAsync(bool stateVehicle, string licensePlate)
+        public async Task<Reserve> ExitVehicleAsync( string licensePlate)
         {
-            throw new NotImplementedException();
-            /*if (stateVehicle == true) 
+            try
             {
-                try
-                {
 
-                    country.ModifiedDate = DateTime.Now;
 
-                    _context.Countries.Update(country); //El método Update que es de EF CORE me sirve para Actualizar un objeto
-                    await _context.SaveChangesAsync();
+                var vehicle = await _context.Vehicles.FirstOrDefaultAsync(v => v.LicensePlate == licensePlate);
+                if (vehicle == null) return null;
 
-                    return country;
-                }
-                catch (DbUpdateException dbUpdateException)
-                {
-                    throw new Exception(dbUpdateException.InnerException?.Message ?? dbUpdateException.Message);
-                }
+                var reserve = await _context.Reserves
+                    .FirstOrDefaultAsync();
+
+                reserve.Id = Guid.NewGuid();
+                var date1 = reserve.EndDate = DateTime.Now;
+                reserve.LicensePlate = licensePlate;
+                reserve.activeVehicle = false;
+
+
+                TimeSpan interval = (TimeSpan)(date1 - reserve.StartDate);
+                Console.Write(interval.TotalHours);
+                Console.Write(interval);
+
+                reserve.TotalCost = interval.Hours * 60;
+
+
+
+                _context.Reserves.Add(reserve);
+                await _context.SaveChangesAsync();
+
+
+
+                return reserve;
+               
+
+
+
             }
-            else
+            catch (DbUpdateException dbUpdateException)
             {
-
-            }*/
+                throw new Exception(dbUpdateException.InnerException?.Message ?? dbUpdateException.Message);
+            }
 
         }
 
