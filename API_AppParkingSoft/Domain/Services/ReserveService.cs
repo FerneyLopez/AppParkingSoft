@@ -58,6 +58,7 @@ namespace API_AppParkingSoft.Domain.Services
 
                 reserve.Id = Guid.NewGuid();
                 var date1 = DateTime.Now; //reserve.EndDate = DateTime.Now;
+                reserve.EndDate = date1;
                 reserve.LicensePlate = licensePlate;
                 reserve.activeVehicle = false;
 
