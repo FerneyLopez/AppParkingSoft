@@ -38,11 +38,11 @@ namespace WebPagesParkingSoft.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit(Vehicle vehicle, Guid? id)
+        public async Task<IActionResult> Edit(Guid? id)
         {
             var url = String.Format("https://localhost:7211/api/Vehicles/EditVehicles/{0}", id);
             var json = await _httpClient.CreateClient().GetStringAsync(url);
-            vehicle = JsonConvert.DeserializeObject<Vehicle>(json);
+            Vehicle vehicle = JsonConvert.DeserializeObject<Vehicle>(json);
             return View(vehicle);
         }
     }
