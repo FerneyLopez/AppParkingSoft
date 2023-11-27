@@ -42,7 +42,7 @@ namespace API_AppParkingSoft.Controllers
             {
                 if (ex.Message.Contains("duplicate"))
                 {
-                    return Conflict(String.Format("Ya existe la licensia {0}.", vehicle.LicensePlate));
+                    return Conflict(String.Format("Ya existe la licencia {0}.", vehicle.LicensePlate));
                 }
 
                 return Conflict(ex.Message);
