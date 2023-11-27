@@ -8,7 +8,7 @@ namespace API_AppParkingSoft.DAL.Entities
         public string CategoryName { get; set; }
 
         //Rates
-        [Display(Name = "Tarifas")]
-        public ICollection<Rate>? Rates { get; set; }
+        [Display(Name = "Tarifa")]
+        public Rate? Rates { get; set; }
     }
 }

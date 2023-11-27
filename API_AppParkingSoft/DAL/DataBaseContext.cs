@@ -11,6 +11,11 @@ namespace API_AppParkingSoft.DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<CategoryVehicle>()
+               .HasOne(c => c.Rates)
+               .WithOne(r => r.CategoryVehicle)
+               .HasForeignKey<Rate>(r => r.idCategoryVehicle);
+
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Vehicle>().HasIndex(v => v.LicensePlate).IsUnique();
