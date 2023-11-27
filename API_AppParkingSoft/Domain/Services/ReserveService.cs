@@ -106,13 +106,7 @@ namespace API_AppParkingSoft.Domain.Services
                 _context.Reserves.Add(reserve);
                 await _context.SaveChangesAsync();
 
-
-
                 return reserve;
-               
-
-
-
             }
             catch (DbUpdateException dbUpdateException)
             {
@@ -121,14 +115,16 @@ namespace API_AppParkingSoft.Domain.Services
 
         }
 
-        public Task<IEnumerable<Reserve>> GetActiveReservesAsync()
+        public async Task<IEnumerable<Reserve>> GetActiveReservesAsync()
         {
-            throw new NotImplementedException();
+            return await _context.Reserves.Where(r => r.activeVehicle == true)
+                .ToListAsync();
         }
 
-        public Task<IEnumerable<Reserve>> GetInactiveReservesAsync()
+        public async Task<IEnumerable<Reserve>> GetInactiveReservesAsync()
         {
-            throw new NotImplementedException();
+            return await _context.Reserves.Where(r => r.activeVehicle == false)
+                .ToListAsync();
         }
 
 

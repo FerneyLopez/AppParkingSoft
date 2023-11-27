@@ -18,7 +18,7 @@ namespace API_AppParkingSoft.Controllers
 
         [HttpPost, ActionName("Create")]
         [Route("CreateReserve")]
-        public async Task<ActionResult<Rate>> CreateReserveAsync(string licensePlate)
+        public async Task<ActionResult<Reserve>> CreateReserveAsync(string licensePlate)
         {
             try
             {
@@ -36,7 +36,7 @@ namespace API_AppParkingSoft.Controllers
 
         [HttpPut, ActionName("Update")]
         [Route("VehicleExit")]
-        public async Task<ActionResult<Rate>> ExitVehicleAsync(string licensePlate)
+        public async Task<ActionResult<Reserve>> ExitVehicleAsync(string licensePlate)
         {
             try
             {
@@ -50,6 +50,28 @@ namespace API_AppParkingSoft.Controllers
             {
                 return Conflict(ex.Message);
             }
+        }
+
+        [HttpGet, ActionName("Get")]
+        [Route("GetActiveVehicles")]
+        public async Task<ActionResult<IEnumerable<Rate>>> GetActiveReservesAsync()
+        {
+            var reserves = await _reserveService.GetActiveReservesAsync();
+
+            if (reserves == null || !reserves.Any()) return NotFound();
+
+            return Ok(reserves);
+        }
+
+        [HttpGet, ActionName("Get")]
+        [Route("GetInactiveVehicles")]
+        public async Task<ActionResult<IEnumerable<Rate>>> GetInactiveReservesAsync()
+        {
+            var reserves = await _reserveService.GetInactiveReservesAsync();
+
+            if (reserves == null || !reserves.Any()) return NotFound();
+
+            return Ok(reserves);
         }
     }
 }
