@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
@@ -12,6 +12,7 @@
     <Compile Include="..\..\API_AppParkingSoft\DAL\Entities\Rate.cs" Link="Models\Rate.cs" />
     <Compile Include="..\..\API_AppParkingSoft\DAL\Entities\Reserve.cs" Link="Controllers\Reserve.cs" />
     <Compile Include="..\..\API_AppParkingSoft\DAL\Entities\User.cs" Link="Controllers\User.cs" />
+    <Compile Include="..\..\API_AppParkingSoft\DAL\Entities\Vehicle.cs" Link="Models\Vehicle.cs" />
   </ItemGroup>
 
   <ItemGroup>

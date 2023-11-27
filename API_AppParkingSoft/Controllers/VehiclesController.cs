@@ -67,7 +67,7 @@ namespace API_AppParkingSoft.Controllers
 
 
         [HttpPut, ActionName("Edit")]
-        [Route("EditVehicles")]
+        [Route("EditVehicles/{id}")]
         public async Task<ActionResult<Vehicle>> EditVehicleAsync(Vehicle vehicle, Guid id) //, Guid clientId)
         {
             try

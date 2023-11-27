@@ -66,7 +66,7 @@ namespace API_AppParkingSoft.Controllers
         }
 
         [HttpPut, ActionName("Edit")]
-        [Route("EditRate")]
+        [Route("EditRate/{id}")]
         public async Task<ActionResult<Rate>> EditRateAsync(Rate rate)
         {
             try

@@ -41,7 +41,7 @@ namespace API_AppParkingSoft.Domain.Services
         }
 
 
-        public async Task<Vehicle> EditVehicleAsync(Vehicle vehicle, Guid id)//, Guid clientId)
+        public async Task<Vehicle> EditVehicleAsync(Vehicle vehicle, Guid id)
         {
             try
             {
