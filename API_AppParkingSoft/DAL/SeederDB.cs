@@ -26,7 +26,7 @@ namespace API_AppParkingSoft.DAL
             await PopulateCategoryVehiclesAsync();
             await PopulateVehiclesAsync();
             await PopulateReservesAsync();
-            //await PopulateRatesAsync();
+            await PopulateRatesAsync();
 
             await _context.SaveChangesAsync(); 
         }
@@ -113,7 +113,6 @@ namespace API_AppParkingSoft.DAL
                 
             }
         }
-
 
         private async Task PopulateVehiclesAsync()
         {
@@ -213,7 +212,7 @@ namespace API_AppParkingSoft.DAL
         }
 
 
-        /*private async Task PopulateRatesAsync()
+       private async Task PopulateRatesAsync()
         {
             if (!_context.Rates.Any())
             {
@@ -279,7 +278,7 @@ namespace API_AppParkingSoft.DAL
                 }); 
             }
             
-        }*/
+        }
         #endregion
 
     }
