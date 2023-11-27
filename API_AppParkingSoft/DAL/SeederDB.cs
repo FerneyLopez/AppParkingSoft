@@ -124,7 +124,7 @@ namespace API_AppParkingSoft.DAL
                     LicensePlate = "STD-05D",
                     Brand = "AKT",
                     Model = "2015",
-                    CategoryName = "Motocicleta"
+                    CategoryName = "Motocicleta",
 
                 });
 

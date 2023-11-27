@@ -92,6 +92,8 @@ namespace API_AppParkingSoft.Domain.Services
                 TimeSpan interval = date1 - reserve.StartDate;
 
                 var rate = vehicle?.CategoryVehicle?.Rate;
+                
+                
 
                 if (rate == null)
                 {
