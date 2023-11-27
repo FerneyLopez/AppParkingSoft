@@ -212,7 +212,7 @@ namespace API_AppParkingSoft.DAL
         }
 
 
-       private async Task PopulateRatesAsync()
+      private async Task PopulateRatesAsync()
         {
             if (!_context.Rates.Any())
             {
