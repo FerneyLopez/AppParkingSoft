@@ -9,6 +9,8 @@ namespace API_AppParkingSoft.DAL.Entities
 
         //Rates
         [Display(Name = "Tarifa")]
-        public Rate? Rates { get; set; }
+        public Rate? Rate { get; set; }
+        public Guid? IdRate { get; set; }
+
     }
 }

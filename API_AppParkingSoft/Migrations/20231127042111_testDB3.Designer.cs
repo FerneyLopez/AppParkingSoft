@@ -4,6 +4,7 @@ using API_AppParkingSoft.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_AppParkingSoft.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    partial class DataBaseContextModelSnapshot : ModelSnapshot
+    [Migration("20231127042111_testDB3")]
+    partial class testDB3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,9 +34,6 @@ namespace API_AppParkingSoft.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("IdRate")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
                     b.ToTable("CategoryVehicles");
@@ -45,10 +44,6 @@ namespace API_AppParkingSoft.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("CategoryName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RateName")
                         .IsRequired()
@@ -163,12 +158,9 @@ namespace API_AppParkingSoft.Migrations
                     b.Property<string>("Brand")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CategoryName")
+                    b.Property<string>("CategoryVehicle")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid?>("CategoryVehicleId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("LicensePlate")
                         .IsRequired()
@@ -179,8 +171,6 @@ namespace API_AppParkingSoft.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryVehicleId");
-
                     b.HasIndex("LicensePlate")
                         .IsUnique();
 
@@ -190,7 +180,7 @@ namespace API_AppParkingSoft.Migrations
             modelBuilder.Entity("API_AppParkingSoft.DAL.Entities.Rate", b =>
                 {
                     b.HasOne("API_AppParkingSoft.DAL.Entities.CategoryVehicle", "CategoryVehicle")
-                        .WithOne("Rate")
+                        .WithOne("Rates")
                         .HasForeignKey("API_AppParkingSoft.DAL.Entities.Rate", "idCategoryVehicle")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -209,18 +199,9 @@ namespace API_AppParkingSoft.Migrations
                         .HasForeignKey("VehicleId");
                 });
 
-            modelBuilder.Entity("API_AppParkingSoft.DAL.Entities.Vehicle", b =>
-                {
-                    b.HasOne("API_AppParkingSoft.DAL.Entities.CategoryVehicle", "CategoryVehicle")
-                        .WithMany()
-                        .HasForeignKey("CategoryVehicleId");
-
-                    b.Navigation("CategoryVehicle");
-                });
-
             modelBuilder.Entity("API_AppParkingSoft.DAL.Entities.CategoryVehicle", b =>
                 {
-                    b.Navigation("Rate");
+                    b.Navigation("Rates");
                 });
 
             modelBuilder.Entity("API_AppParkingSoft.DAL.Entities.User", b =>

@@ -1,4 +1,5 @@
 ﻿using API_AppParkingSoft.DAL.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Diagnostics.Metrics;
 using System.Xml.Linq;
@@ -86,30 +87,27 @@ namespace API_AppParkingSoft.DAL
 
                 _context.CategoryVehicles.Add(new CategoryVehicle
                 {
-                    CategoryName = "Motocicleta",
-                    
-
-
-                });
-
-                _context.CategoryVehicles.Add(new CategoryVehicle
-                {
-                    CategoryName = "Carro",
-
+                    //Id = new Guid("2d5317b9-8750-45f3-0b42-08dbee8f948e"),
+                    CategoryName = "Motocicleta"
 
                 });
 
                 _context.CategoryVehicles.Add(new CategoryVehicle
                 {
+                    //Id = new Guid("cdb5731f-7255-42ed-99fc-08dbee9d7cd2"),
+                    CategoryName = "Carro"
+                });
+
+                _context.CategoryVehicles.Add(new CategoryVehicle
+                {
+                    //Id = new Guid("0b316524-2595-40b8-99fd-08dbee9d7cd2"),
                     CategoryName = "Ciclomotor",
-
-
                 });
 
                 _context.CategoryVehicles.Add(new CategoryVehicle
                 {
+                    //Id = new Guid("bf47106b-0962-4d33-99fe-08dbee9d7cd2"),
                     CategoryName = "Bicicleta",
-
                 });
             }
         }
@@ -125,7 +123,7 @@ namespace API_AppParkingSoft.DAL
                     LicensePlate = "STD-05D",
                     Brand = "AKT",
                     Model = "2015",
-                    CategoryVehicle = "Motocicleta"
+                    CategoryName = "Motocicleta"
 
                 });
 
@@ -134,7 +132,7 @@ namespace API_AppParkingSoft.DAL
                     LicensePlate = "ILB-58D",
                     Brand = "Renault",
                     Model = "2023",
-                    CategoryVehicle = "Carro"
+                    CategoryName = "Carro"
 
                 });
 
@@ -143,7 +141,7 @@ namespace API_AppParkingSoft.DAL
                     LicensePlate = "UFI-16F",
                     Brand = "YAMAHA",
                     Model = "2022",
-                    CategoryVehicle = "Motocicleta"
+                    CategoryName = "Motocicleta"
                 });
 
                 _context.Vehicles.Add(new Vehicle
@@ -151,7 +149,7 @@ namespace API_AppParkingSoft.DAL
                     LicensePlate = "WKGSN001428",
                     Brand = "RUNNER",
                     Model = "2015",
-                    CategoryVehicle = "Bicicleta"
+                    CategoryName = "Bicicleta"
                 });
             }
         }
@@ -217,6 +215,17 @@ namespace API_AppParkingSoft.DAL
         {
             if (!_context.Rates.Any())
             {
+                var motocicletaCategory = await _context.CategoryVehicles
+                    .FirstOrDefaultAsync(c => c.CategoryName == "Motocicleta");
+
+                var carroCategory = await _context.CategoryVehicles
+                    .FirstOrDefaultAsync(c => c.CategoryName == "Carro");
+
+                var ciclomotorCategory = await _context.CategoryVehicles
+                    .FirstOrDefaultAsync(c => c.CategoryName == "Ciclomotor");
+
+                var bicicletaCategory = await _context.CategoryVehicles
+                    .FirstOrDefaultAsync(c => c.CategoryName == "Bicicleta");
 
                 _context.Rates.Add(new Rate
                 {
@@ -225,11 +234,8 @@ namespace API_AppParkingSoft.DAL
                     dailyRate = 3000,
                     weeklyRate = 15000,
                     monthlyRate = 50000,
-                    idCategoryVehicle = new Guid("2d5317b9-8750-45f3-0b42-08dbee8f948e"),
-                    CategoryVehicle = new CategoryVehicle{
-                        Id = new Guid("2d5317b9-8750-45f3-0b42-08dbee8f948e"),
-                        CategoryName = "Motocicleta"
-                    }
+                    CategoryName = "Motocicleta",
+                    idCategoryVehicle = motocicletaCategory.Id
                 });
 
                 _context.Rates.Add(new Rate
@@ -239,12 +245,9 @@ namespace API_AppParkingSoft.DAL
                     dailyRate = 10000,
                     weeklyRate = 45000,
                     monthlyRate = 150000,
-                    idCategoryVehicle = new Guid("cdb5731f-7255-42ed-99fc-08dbee9d7cd2"),
-                    CategoryVehicle = new CategoryVehicle
-                    {
-                        Id = new Guid("cdb5731f-7255-42ed-99fc-08dbee9d7cd2"),
-                        CategoryName = "Carro"
-                    }
+                    CategoryName = "Carro",
+                    idCategoryVehicle = carroCategory.Id
+
                 });
 
                 _context.Rates.Add(new Rate
@@ -254,12 +257,8 @@ namespace API_AppParkingSoft.DAL
                     dailyRate = 2000,
                     weeklyRate = 15000,
                     monthlyRate = 45000,
-                    idCategoryVehicle = new Guid("0b316524-2595-40b8-99fd-08dbee9d7cd2"),
-                    CategoryVehicle = new CategoryVehicle
-                    {
-                        Id = new Guid("0b316524-2595-40b8-99fd-08dbee9d7cd2"),
-                        CategoryName = "Ciclomotor"
-                    }
+                    CategoryName = "Ciclomotor",
+                    idCategoryVehicle = ciclomotorCategory.Id
                 });
 
                 _context.Rates.Add(new Rate
@@ -269,14 +268,9 @@ namespace API_AppParkingSoft.DAL
                     dailyRate = 1000,
                     weeklyRate = 10000,
                     monthlyRate = 30000,
-                    idCategoryVehicle = new Guid("bf47106b-0962-4d33-99fe-08dbee9d7cd2"),
-                    CategoryVehicle = new CategoryVehicle
-                    {
-                        Id = new Guid("bf47106b-0962-4d33-99fe-08dbee9d7cd2"),
-                        CategoryName = "Motocicleta"
-                    }
-                }); ;
-
+                    CategoryName = "Bicicleta",
+                    idCategoryVehicle = bicicletaCategory.Id
+                }); 
             }
         }
         #endregion

@@ -17,7 +17,7 @@ namespace API_AppParkingSoft.Domain.Services
         {
             return await _context.Rates
                 .Include(r => r.CategoryVehicle)
-                .Select(r => new Rate
+                /*.Select(r => new Rate
                 {
                     Id = r.Id,
                     RateName = r.RateName,
@@ -32,7 +32,7 @@ namespace API_AppParkingSoft.Domain.Services
                     },
                     idCategoryVehicle = r.idCategoryVehicle
                     
-                })
+                })*/
                 .ToListAsync();
         }
 
