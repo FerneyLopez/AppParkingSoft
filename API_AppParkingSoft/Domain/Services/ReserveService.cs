@@ -44,13 +44,13 @@ namespace API_AppParkingSoft.Domain.Services
         }
 
         //Vehicles Exit
-        public async Task<Reserve> ExitVehicleAsync( string licensePlate)
+        public async Task<Reserve> ExitVehicleAsync(string licensePlate)
         {
             try
             {
 
 
-                var vehicle = await _context.Vehicles.FirstOrDefaultAsync(v => v.LicensePlate == licensePlate);
+                /*var vehicle = await _context.Vehicles.FirstOrDefaultAsync(v => v.LicensePlate == licensePlate);
                 if (vehicle == null) return null;
 
                 var reserve = await _context.Reserves
@@ -71,9 +71,37 @@ namespace API_AppParkingSoft.Domain.Services
                 
 
 
-                reserve.TotalCost = interval.TotalHours * 60;
+                reserve.TotalCost = interval.TotalHours * 60;*/
 
+                var vehicle = await _context.Vehicles
+                   .Include(v => v.CategoryVehicle)
+                        .ThenInclude(cv => cv.Rate)
+                   .FirstOrDefaultAsync(v => v.LicensePlate == licensePlate);
+                
+                if (vehicle == null) return null;
 
+                var reserve = await _context.Reserves
+                    .FirstOrDefaultAsync(r => r.LicensePlate == licensePlate);
+
+                reserve.Id = Guid.NewGuid();
+                var date1 = DateTime.Now; //reserve.EndDate = DateTime.Now;
+                reserve.EndDate = date1;
+                reserve.LicensePlate = licensePlate;
+                reserve.activeVehicle = false;
+
+                TimeSpan interval = date1 - reserve.StartDate;
+
+                var rate = vehicle?.CategoryVehicle?.Rate;
+
+                if (rate == null)
+                {
+                    throw new InvalidOperationException($"No existe una tarifa asociada para el vehiculo con la placa: {licensePlate}");
+                }
+
+                // Calculate cost (Private method)
+                reserve.TotalCost = CalculateTotalCost(interval, rate);
+
+                vehicle.CategoryVehicle.Rate.Id = rate.Id;
 
                 _context.Reserves.Add(reserve);
                 await _context.SaveChangesAsync();
@@ -102,5 +130,32 @@ namespace API_AppParkingSoft.Domain.Services
         {
             throw new NotImplementedException();
         }
+
+
+        #region Private Method
+        private double CalculateTotalCost(TimeSpan interval, Rate rate)
+        {
+            double TotalCost = 0;
+
+            if (interval.TotalHours <= 1)
+            {
+                TotalCost = interval.TotalHours * rate.hourlyRate;
+            }
+            else if (interval.TotalDays <= 1)
+            {
+                TotalCost = interval.TotalDays * rate.dailyRate;
+            }
+            else if (interval.TotalDays <= 7)
+            {
+                TotalCost = interval.TotalDays * rate.weeklyRate;
+            }
+            else
+            {
+                TotalCost = interval.TotalDays * rate.monthlyRate;
+            }
+
+            return TotalCost;
+        }
+        #endregion
     }
 }

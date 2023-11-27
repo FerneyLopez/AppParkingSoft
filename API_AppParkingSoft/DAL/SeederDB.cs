@@ -26,7 +26,7 @@ namespace API_AppParkingSoft.DAL
             await PopulateCategoryVehiclesAsync();
             await PopulateVehiclesAsync();
             await PopulateReservesAsync();
-            await PopulateRatesAsync();
+            //await PopulateRatesAsync();
 
             await _context.SaveChangesAsync(); 
         }
@@ -84,31 +84,33 @@ namespace API_AppParkingSoft.DAL
         {
             if (!_context.CategoryVehicles.Any())
             {
+               
 
                 _context.CategoryVehicles.Add(new CategoryVehicle
                 {
-                    //Id = new Guid("2d5317b9-8750-45f3-0b42-08dbee8f948e"),
-                    CategoryName = "Motocicleta"
-
+                    CategoryName = "Motocicleta",
+                    IdRate = Guid.NewGuid()
                 });
 
                 _context.CategoryVehicles.Add(new CategoryVehicle
                 {
-                    //Id = new Guid("cdb5731f-7255-42ed-99fc-08dbee9d7cd2"),
-                    CategoryName = "Carro"
+                    CategoryName = "Carro",
+                    IdRate = Guid.NewGuid()
                 });
 
                 _context.CategoryVehicles.Add(new CategoryVehicle
                 {
-                    //Id = new Guid("0b316524-2595-40b8-99fd-08dbee9d7cd2"),
                     CategoryName = "Ciclomotor",
+                    IdRate = Guid.NewGuid()
                 });
 
                 _context.CategoryVehicles.Add(new CategoryVehicle
                 {
-                    //Id = new Guid("bf47106b-0962-4d33-99fe-08dbee9d7cd2"),
                     CategoryName = "Bicicleta",
+                    IdRate = Guid.NewGuid()
                 });
+
+                
             }
         }
 
@@ -211,7 +213,7 @@ namespace API_AppParkingSoft.DAL
         }
 
 
-        private async Task PopulateRatesAsync()
+        /*private async Task PopulateRatesAsync()
         {
             if (!_context.Rates.Any())
             {
@@ -229,6 +231,7 @@ namespace API_AppParkingSoft.DAL
 
                 _context.Rates.Add(new Rate
                 {
+                    Id = motocicletaCategory?.IdRate ?? Guid.Empty,
                     RateName = "Parqueo Motocicleta",
                     hourlyRate = 1000,
                     dailyRate = 3000,
@@ -240,6 +243,7 @@ namespace API_AppParkingSoft.DAL
 
                 _context.Rates.Add(new Rate
                 {
+                    Id = carroCategory?.IdRate ?? Guid.Empty,
                     RateName = "Parqueo Carro",
                     hourlyRate = 5000,
                     dailyRate = 10000,
@@ -252,6 +256,7 @@ namespace API_AppParkingSoft.DAL
 
                 _context.Rates.Add(new Rate
                 {
+                    Id = ciclomotorCategory?.IdRate ?? Guid.Empty,
                     RateName = "Parqueo Ciclo Motor",
                     hourlyRate = 1000,
                     dailyRate = 2000,
@@ -263,6 +268,7 @@ namespace API_AppParkingSoft.DAL
 
                 _context.Rates.Add(new Rate
                 {
+                    Id = bicicletaCategory?.IdRate ?? Guid.Empty,
                     RateName = "Parqueo Bicicleta",
                     hourlyRate = 500,
                     dailyRate = 1000,
@@ -272,7 +278,8 @@ namespace API_AppParkingSoft.DAL
                     idCategoryVehicle = bicicletaCategory.Id
                 }); 
             }
-        }
+            
+        }*/
         #endregion
 
     }
