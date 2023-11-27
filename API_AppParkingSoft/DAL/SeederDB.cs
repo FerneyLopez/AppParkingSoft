@@ -222,6 +222,7 @@ namespace API_AppParkingSoft.DAL
                 {
                     RateName = "Parqueo Motocicleta",
                     hourlyRate = 1000,
+                    dailyRate = 3000,
                     weeklyRate = 15000,
                     monthlyRate = 50000,
                     idCategoryVehicle = new Guid("2d5317b9-8750-45f3-0b42-08dbee8f948e"),
@@ -235,6 +236,7 @@ namespace API_AppParkingSoft.DAL
                 {
                     RateName = "Parqueo Carro",
                     hourlyRate = 5000,
+                    dailyRate = 10000,
                     weeklyRate = 45000,
                     monthlyRate = 150000,
                     idCategoryVehicle = new Guid("cdb5731f-7255-42ed-99fc-08dbee9d7cd2"),
@@ -249,6 +251,7 @@ namespace API_AppParkingSoft.DAL
                 {
                     RateName = "Parqueo Ciclo Motor",
                     hourlyRate = 1000,
+                    dailyRate = 2000,
                     weeklyRate = 15000,
                     monthlyRate = 45000,
                     idCategoryVehicle = new Guid("0b316524-2595-40b8-99fd-08dbee9d7cd2"),
@@ -263,6 +266,7 @@ namespace API_AppParkingSoft.DAL
                 {
                     RateName = "Parqueo Bicicleta",
                     hourlyRate = 500,
+                    dailyRate = 1000,
                     weeklyRate = 10000,
                     monthlyRate = 30000,
                     idCategoryVehicle = new Guid("bf47106b-0962-4d33-99fe-08dbee9d7cd2"),
@@ -271,7 +275,7 @@ namespace API_AppParkingSoft.DAL
                         Id = new Guid("bf47106b-0962-4d33-99fe-08dbee9d7cd2"),
                         CategoryName = "Motocicleta"
                     }
-                });
+                }); ;
 
             }
         }

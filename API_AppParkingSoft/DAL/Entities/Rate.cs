@@ -12,12 +12,16 @@ namespace API_AppParkingSoft.DAL.Entities
         [Required(ErrorMessage = "¡El campo {1} es obligatorio!")]
         public double hourlyRate { get; set; }
 
-        [Display(Name = "Tarifa por semana")]
+        [Display(Name = "Tarifa por dia")]
         [Required(ErrorMessage = "¡El campo {2} es obligatorio!")]
+        public double dailyRate { get; set; }
+
+        [Display(Name = "Tarifa por semana")]
+        [Required(ErrorMessage = "¡El campo {3} es obligatorio!")]
         public double weeklyRate { get; set; }
 
         [Display(Name = "Tarifa mensual")]
-        [Required(ErrorMessage = "¡El campo {3} es obligatorio!")]
+        [Required(ErrorMessage = "¡El campo {4} es obligatorio!")]
         public double monthlyRate { get; set; }
 
 

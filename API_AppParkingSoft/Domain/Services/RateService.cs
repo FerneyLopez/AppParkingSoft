@@ -22,6 +22,7 @@ namespace API_AppParkingSoft.Domain.Services
                     Id = r.Id,
                     RateName = r.RateName,
                     hourlyRate = r.hourlyRate,
+                    dailyRate = r.dailyRate,
                     weeklyRate = r.weeklyRate,
                     monthlyRate = r.monthlyRate,
                     CategoryVehicle = new CategoryVehicle
