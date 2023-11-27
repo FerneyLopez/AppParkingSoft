@@ -10,8 +10,7 @@
     <Compile Include="..\..\..\AppParkingSoft\API_AppParkingSoft\DAL\Entities\CategoryVehicle.cs" Link="Controllers\CategoryVehicle.cs" />
     <Compile Include="..\..\API_AppParkingSoft\DAL\Entities\AuditBase.cs" Link="Models\AuditBase.cs" />
     <Compile Include="..\..\API_AppParkingSoft\DAL\Entities\Rate.cs" Link="Models\Rate.cs" />
-    <Compile Include="..\..\API_AppParkingSoft\DAL\Entities\Reserve.cs" Link="Controllers\Reserve.cs" />
-    <Compile Include="..\..\API_AppParkingSoft\DAL\Entities\User.cs" Link="Controllers\User.cs" />
+    <Compile Include="..\..\API_AppParkingSoft\DAL\Entities\Reserve.cs" Link="Models\Reserve.cs" />
     <Compile Include="..\..\API_AppParkingSoft\DAL\Entities\Vehicle.cs" Link="Models\Vehicle.cs" />
   </ItemGroup>
 

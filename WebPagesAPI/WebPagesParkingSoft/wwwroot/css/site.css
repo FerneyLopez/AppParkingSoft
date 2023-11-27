@@ -1,7 +1,12 @@
 html {
   font-size: 14px;
 }
-
+:root {
+    --color1: #FFAB3B;
+    --color2: #FFD12F;
+    --color3: #37323E;
+    --color4: #BFBDC1;
+}
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -14,5 +19,9 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+h1, h2, h3, h4, h5,h6 {
+    font-family: 'Exo', sans-serif
 }

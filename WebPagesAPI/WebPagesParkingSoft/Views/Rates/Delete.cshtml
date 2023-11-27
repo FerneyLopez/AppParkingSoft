@@ -1,0 +1,28 @@
+﻿@model API_AppParkingSoft.DAL.Entities.Rate
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Eliminar Tarifa</h1>
+
+<h4>Estas seguro que deseas eliminar la tarifa?</h4>
+<hr />
+
+a<div class="row">
+    <div class="col-12">
+        <partial name="../Shared/PartialView/_VehiclesDetailsDelete.cshtml">
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="Id" />
+                <input type="submit" value="Eliminar" class="btn btn-outline-danger" />
+                <a asp-action="Index" class="btn btn-outline-success">Regresar</a>
+            </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

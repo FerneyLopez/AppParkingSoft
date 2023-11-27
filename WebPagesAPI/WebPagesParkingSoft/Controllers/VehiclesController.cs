@@ -38,12 +38,39 @@ namespace WebPagesParkingSoft.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit(Vehicle vehicle, Guid? id)
+        public async Task<IActionResult> Edit(Guid? id)
         {
             var url = String.Format("https://localhost:7211/api/Vehicles/EditVehicles/{0}", id);
             var json = await _httpClient.CreateClient().GetStringAsync(url);
-            vehicle = JsonConvert.DeserializeObject<Vehicle>(json);
+            Vehicle vehicle = JsonConvert.DeserializeObject<Vehicle>(json);
             return View(vehicle);
         }
+
+        [HttpGet]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(Vehicle vehicle, Guid? id)
+        {
+            var url = String.Format("https://localhost:7211/api/Vehicles/EditVehicles/{0}", id);
+            await _httpClient.CreateClient().PutAsJsonAsync(url, vehicle);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(Guid? id)
+        {
+            var url = String.Format("https://localhost:7211/api/Vehicles/GetVehicles/{0}", id);
+            var json = await _httpClient.CreateClient().GetStringAsync(url);
+            Vehicle vehicle = JsonConvert.DeserializeObject<Vehicle>(json);
+            return View(vehicle);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(Guid? id)
+        {
+            var url = String.Format("https://localhost:7211/api/Vehicles/GetVehicles/{0}", id);
+            await _httpClient.CreateClient().DeleteAsync(url);
+            return RedirectToAction("Index");
+        }
+
     }
 }
