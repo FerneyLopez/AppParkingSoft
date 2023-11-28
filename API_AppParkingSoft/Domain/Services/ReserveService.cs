@@ -50,29 +50,6 @@ namespace API_AppParkingSoft.Domain.Services
             {
 
 
-                /*var vehicle = await _context.Vehicles.FirstOrDefaultAsync(v => v.LicensePlate == licensePlate);
-                if (vehicle == null) return null;
-
-                var reserve = await _context.Reserves
-                    .FirstOrDefaultAsync(r => r.LicensePlate == licensePlate);
-
-                reserve.Id = Guid.NewGuid();
-                var date1 = DateTime.Now; //reserve.EndDate = DateTime.Now;
-                reserve.EndDate = date1;
-                reserve.LicensePlate = licensePlate;
-                reserve.activeVehicle = false;
-
-
-                TimeSpan interval = (TimeSpan)(date1 - reserve.StartDate);
-                Console.WriteLine(date1);
-                Console.WriteLine(reserve.StartDate);
-                Console.WriteLine(interval.TotalHours);
-                Console.WriteLine(interval);
-                
-
-
-                reserve.TotalCost = interval.TotalHours * 60;*/
-
                 var vehicle = await _context.Vehicles
                    .Include(v => v.CategoryVehicle)
                         .ThenInclude(cv => cv.Rate)
